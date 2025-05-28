@@ -4,21 +4,22 @@ A proof-of-concept that uses CLIP to retrieve and cluster image patches from PDF
 
 ## Project structure
 
+```bash
+.
+├── .gitignore           # Git ignore rules (keep folders, ignore files inside)
+├── README.md            # Project overview and instructions
+├── offline/             # Offline data preparation scripts
+│   └── prep_dataset.py  # (e.g. dataset download and formatting)
+├── online/              # Inference code and live scripts
+│   └── inference.py     # Retrieves top-K patches, clusters rows, saves crops
+├── documents/           # Source PDFs (keep folder, ignore contents)
+├── output/              # Generated artifacts (ignore files, keep folders)
+│   ├── image_patch_embeddings.pt  # CLIP embeddings
+│   ├── metadata.json              # Patch-coord metadata
+│   └── top_rows/                  # Saved full-row images
+└── list_files.py        # Utility to list project files
 ```
 
-.
-├── .venv/                           # Python virtualenv
-├── documents/                       # Source PDFs
-├── offline/prep_dataset.py          # Script to retrieve & save top-row crops
-
-├── online/inference.py              # Script to retrieve & save top-row crops
-├── output/
-│   ├── image\_patch\_embeddings.pt  # CLIP embeddings
-│   ├── metadata.json                # Patch-coord metadata
-│   └── top_rows/                    # Saved row images
-└── README.md                        # ← You are here
-
-````
 
 ## Getting started
 
@@ -37,14 +38,18 @@ A proof-of-concept that uses CLIP to retrieve and cluster image patches from PDF
 3. **Prepare your PDFs**
    Drop your `.pdf` files into the `documents/` folder.
 
-4. **Index & infer**
+   ```bash
+   python offline/prep_data.py
+   ```
+
+4. **Run inference**
 
    ```bash
-   python inference.py
+   python online/inference.py
    ```
 
    * You’ll be prompted for a text query (e.g. `what is ...`).
-   * The script will output the top-10 patches, cluster them into rows, and save full-width row crops under `output/top_rows/`.
+   * The script will output the top-k patches, cluster them into rows, and save full-width row crops under `output/top_rows/`.
    * Check the console for which row images were saved.
 
 ## What’s next?
