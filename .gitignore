@@ -1,2 +1,11 @@
 # venv
 .venv/
+
+list_files.py
+
+output/top_rows/
+output/image_patch_embeddings.pt
+output/metadata.json
+output/merged.pdf
+
+documents/
