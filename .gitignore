@@ -1,11 +1,17 @@
-# venv
+# Virtual environment
 .venv/
 
+# Utility scripts
 list_files.py
 
-output/top_rows/
+# Output data (keep folders but ignore all files inside)
+output/top_rows/*
+!output/top_rows/
+
 output/image_patch_embeddings.pt
 output/metadata.json
 output/merged.pdf
 
-documents/
+# Raw documents (keep the folder, ignore PDFs)
+documents/*
+!documents/
