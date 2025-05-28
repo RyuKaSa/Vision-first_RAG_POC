@@ -1,79 +1,85 @@
 #!/usr/bin/env python3
 import os
+import json
+import glob
 import torch
 import torch.nn.functional as F
-from transformers import AutoConfig
-from colpali_engine.models import ColQwen2_5, ColQwen2_5_Processor
+from transformers import CLIPModel, CLIPProcessor
+from PIL import Image
+from PyPDF2 import PdfMerger
+from pdf2image import convert_from_bytes
+from io import BytesIO
 
-# — — —  Setup device
-device = torch.device(
-    "cuda" if torch.cuda.is_available()
-    else "mps"  if torch.backends.mps.is_available()
-    else "cpu"
-)
+# — — —  Setup
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DOC_DIR    = "documents"
+OUTPUT_DIR = "output"
+EMBED_FILE = os.path.join(OUTPUT_DIR, "image_patch_embeddings.pt")
+META_FILE  = os.path.join(OUTPUT_DIR, "metadata.json")
+TOP_DIR    = os.path.join(OUTPUT_DIR, "top_patches")
 
-# — — —  Model IDs
-FINE_TUNED = "vidore/colqwen2.5-v0.2"
-BASE_VL    = "Qwen/Qwen2.5-VL-3B-Instruct"
+os.makedirs(TOP_DIR, exist_ok=True)
+# clean top_patches folder
+for file in os.listdir(TOP_DIR):
+    os.remove(os.path.join(TOP_DIR, file))
 
-# — — —  Load config + model
-config = AutoConfig.from_pretrained(BASE_VL)
-model  = ColQwen2_5.from_pretrained(
-    FINE_TUNED,
-    config=config,
-    torch_dtype=torch.float16,
-).eval().to(device)
+# — — —  Load CLIP model & processor
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
-# — — —  Load processor (handles both images & text)
-processor = ColQwen2_5_Processor.from_pretrained(FINE_TUNED)
+# — — —  Load embeddings and metadata
+all_embeds = torch.load(EMBED_FILE)  # list of torch.Tensor [512]
+with open(META_FILE, 'r') as f:
+    metadata = json.load(f)           # list of dicts
 
-# — — —  Load your precomputed image embeddings
-image_embeddings = torch.load(os.path.join("output", "image_embeddings.pt"))
+# — — —  Re-render PDF pages to images
+pdf_paths = sorted(glob.glob(os.path.join(DOC_DIR, "*.pdf")))
+if not pdf_paths:
+    raise FileNotFoundError(f"No PDFs in {DOC_DIR}")
+merger = PdfMerger()
+for p in pdf_paths:
+    merger.append(p)
+buf = BytesIO()
+merger.write(buf)
+merger.close()
+buf.seek(0)
+page_images = convert_from_bytes(buf.read(), dpi=150)
 
-def compute_similarity_scores(q_vec, image_embeddings):
-    q_vec = F.normalize(q_vec, p=2, dim=0)  # 128-d unit vector
-    all_scores = []
-    for page_embed in image_embeddings:
-        # page_embed: [1, num_patches, 128]
-        p = page_embed.squeeze(0).to(device)   # → [num_patches, 128]
-        p = F.normalize(p, p=2, dim=1)         # unit-norm each patch
-        sim = p @ q_vec                        # [num_patches]
-        all_scores.append(F.softmax(sim, dim=0))
-    return all_scores
-
-def main():
-    ### 1) Tokenize your text query ###
-    query = "Who is David Cochard?"
-    text_inputs = processor.tokenizer(
-        query,
-        return_tensors="pt",
-        truncation=True,
-        padding=True,
-    ).to(device)
-
-    ### 2) Run through the model’s *decoder* (the LM head) ###
-    #    then pull out last_hidden_state (2048-dim) and project to 128-d.
+# — — —  Encode text query
+def embed_text(query: str) -> torch.Tensor:
+    inputs = processor(text=query, return_tensors="pt", padding=True).to(device)
     with torch.no_grad():
-        # get the underlying causal-LM decoder
-        decoder = model.get_decoder()
-        outputs = decoder(**text_inputs)
-        hidden_states = outputs.last_hidden_state       # [1, seq_len, 2048]
+        txt_feats = model.get_text_features(**inputs)  # [1, 512]
+    vec = txt_feats.squeeze(0)
+    return F.normalize(vec, p=2, dim=-1)
 
-        # project into the shared 128-d space
-        # (in your LoRA model this layer is named `custom_text_proj`)
-        proj_states = model.custom_text_proj(hidden_states)  # [1, seq_len, 128]
+# — — —  Main
+def main():
+    query = input("Enter your query: ")
+    q_vec = embed_text(query)
 
-    ### 3) Mean-pool + normalize to a single 128-d query vector ###
-    q_vec = proj_states.mean(dim=1).squeeze(0)   # [128]
-    q_vec = F.normalize(q_vec, p=2, dim=0)
+    emb_tensor = torch.stack(all_embeds).to(device)  # [N, 512]
+    emb_tensor = F.normalize(emb_tensor, p=2, dim=-1)
 
-    ### 4) Compute per-patch similarity and print top-5 ###
-    similarity_scores = compute_similarity_scores(q_vec, image_embeddings)
-    for page_idx, scores in enumerate(similarity_scores):
-        top5 = scores.topk(5)
-        print(f"\nPage {page_idx}")
-        print("  Top-5 scores:     ", top5.values.cpu().tolist())
-        print("  Top-5 patch idxs:", top5.indices.cpu().tolist())
+    sims = emb_tensor @ q_vec                         # [N]
+    probs = F.softmax(sims, dim=0)
+    topk = torch.topk(probs, k=10)
+
+    print("=== TOP 10 PATCHES ===")
+    for rank, (idx, score) in enumerate(zip(topk.indices, topk.values), start=1):
+        i = idx.item()
+        sc = score.item()
+        meta = metadata[i]
+        page = meta['page']
+        l, u, r, d = meta['coords']
+        print(f"[{rank}] Page {page}, Patch {meta['patch_index']}, Score: {sc:.4f}")
+
+        # Crop from in-memory page image
+        page_img = page_images[page]
+        patch_img = page_img.crop((l, u, r, d))
+        out_path = os.path.join(TOP_DIR, f"top{rank}_page{page}_patch{meta['patch_index']}.png")
+        patch_img.save(out_path)
+        print(f"Saved: {out_path}")
 
 if __name__ == "__main__":
     main()

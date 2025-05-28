@@ -1,11 +1,3002 @@
 [
   {
     "page": 0,
-    "image_path": "output/page_0.png",
-    "shape": [
-      1,
-      747,
-      128
+    "patch_index": 0,
+    "coords": [
+      0,
+      0,
+      175,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 1,
+    "coords": [
+      175,
+      0,
+      350,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 2,
+    "coords": [
+      350,
+      0,
+      525,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 3,
+    "coords": [
+      525,
+      0,
+      700,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 4,
+    "coords": [
+      700,
+      0,
+      875,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 5,
+    "coords": [
+      875,
+      0,
+      1050,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 6,
+    "coords": [
+      1050,
+      0,
+      1225,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 7,
+    "coords": [
+      1225,
+      0,
+      1400,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 8,
+    "coords": [
+      1400,
+      0,
+      1575,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 9,
+    "coords": [
+      1575,
+      0,
+      1750,
+      248
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 10,
+    "coords": [
+      0,
+      248,
+      175,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 11,
+    "coords": [
+      175,
+      248,
+      350,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 12,
+    "coords": [
+      350,
+      248,
+      525,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 13,
+    "coords": [
+      525,
+      248,
+      700,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 14,
+    "coords": [
+      700,
+      248,
+      875,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 15,
+    "coords": [
+      875,
+      248,
+      1050,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 16,
+    "coords": [
+      1050,
+      248,
+      1225,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 17,
+    "coords": [
+      1225,
+      248,
+      1400,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 18,
+    "coords": [
+      1400,
+      248,
+      1575,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 19,
+    "coords": [
+      1575,
+      248,
+      1750,
+      496
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 20,
+    "coords": [
+      0,
+      496,
+      175,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 21,
+    "coords": [
+      175,
+      496,
+      350,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 22,
+    "coords": [
+      350,
+      496,
+      525,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 23,
+    "coords": [
+      525,
+      496,
+      700,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 24,
+    "coords": [
+      700,
+      496,
+      875,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 25,
+    "coords": [
+      875,
+      496,
+      1050,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 26,
+    "coords": [
+      1050,
+      496,
+      1225,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 27,
+    "coords": [
+      1225,
+      496,
+      1400,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 28,
+    "coords": [
+      1400,
+      496,
+      1575,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 29,
+    "coords": [
+      1575,
+      496,
+      1750,
+      744
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 30,
+    "coords": [
+      0,
+      744,
+      175,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 31,
+    "coords": [
+      175,
+      744,
+      350,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 32,
+    "coords": [
+      350,
+      744,
+      525,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 33,
+    "coords": [
+      525,
+      744,
+      700,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 34,
+    "coords": [
+      700,
+      744,
+      875,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 35,
+    "coords": [
+      875,
+      744,
+      1050,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 36,
+    "coords": [
+      1050,
+      744,
+      1225,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 37,
+    "coords": [
+      1225,
+      744,
+      1400,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 38,
+    "coords": [
+      1400,
+      744,
+      1575,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 39,
+    "coords": [
+      1575,
+      744,
+      1750,
+      992
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 40,
+    "coords": [
+      0,
+      992,
+      175,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 41,
+    "coords": [
+      175,
+      992,
+      350,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 42,
+    "coords": [
+      350,
+      992,
+      525,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 43,
+    "coords": [
+      525,
+      992,
+      700,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 44,
+    "coords": [
+      700,
+      992,
+      875,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 45,
+    "coords": [
+      875,
+      992,
+      1050,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 46,
+    "coords": [
+      1050,
+      992,
+      1225,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 47,
+    "coords": [
+      1225,
+      992,
+      1400,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 48,
+    "coords": [
+      1400,
+      992,
+      1575,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 49,
+    "coords": [
+      1575,
+      992,
+      1750,
+      1240
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 50,
+    "coords": [
+      0,
+      1240,
+      175,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 51,
+    "coords": [
+      175,
+      1240,
+      350,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 52,
+    "coords": [
+      350,
+      1240,
+      525,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 53,
+    "coords": [
+      525,
+      1240,
+      700,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 54,
+    "coords": [
+      700,
+      1240,
+      875,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 55,
+    "coords": [
+      875,
+      1240,
+      1050,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 56,
+    "coords": [
+      1050,
+      1240,
+      1225,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 57,
+    "coords": [
+      1225,
+      1240,
+      1400,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 58,
+    "coords": [
+      1400,
+      1240,
+      1575,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 59,
+    "coords": [
+      1575,
+      1240,
+      1750,
+      1488
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 60,
+    "coords": [
+      0,
+      1488,
+      175,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 61,
+    "coords": [
+      175,
+      1488,
+      350,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 62,
+    "coords": [
+      350,
+      1488,
+      525,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 63,
+    "coords": [
+      525,
+      1488,
+      700,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 64,
+    "coords": [
+      700,
+      1488,
+      875,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 65,
+    "coords": [
+      875,
+      1488,
+      1050,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 66,
+    "coords": [
+      1050,
+      1488,
+      1225,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 67,
+    "coords": [
+      1225,
+      1488,
+      1400,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 68,
+    "coords": [
+      1400,
+      1488,
+      1575,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 69,
+    "coords": [
+      1575,
+      1488,
+      1750,
+      1736
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 70,
+    "coords": [
+      0,
+      1736,
+      175,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 71,
+    "coords": [
+      175,
+      1736,
+      350,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 72,
+    "coords": [
+      350,
+      1736,
+      525,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 73,
+    "coords": [
+      525,
+      1736,
+      700,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 74,
+    "coords": [
+      700,
+      1736,
+      875,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 75,
+    "coords": [
+      875,
+      1736,
+      1050,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 76,
+    "coords": [
+      1050,
+      1736,
+      1225,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 77,
+    "coords": [
+      1225,
+      1736,
+      1400,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 78,
+    "coords": [
+      1400,
+      1736,
+      1575,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 79,
+    "coords": [
+      1575,
+      1736,
+      1750,
+      1984
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 80,
+    "coords": [
+      0,
+      1984,
+      175,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 81,
+    "coords": [
+      175,
+      1984,
+      350,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 82,
+    "coords": [
+      350,
+      1984,
+      525,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 83,
+    "coords": [
+      525,
+      1984,
+      700,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 84,
+    "coords": [
+      700,
+      1984,
+      875,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 85,
+    "coords": [
+      875,
+      1984,
+      1050,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 86,
+    "coords": [
+      1050,
+      1984,
+      1225,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 87,
+    "coords": [
+      1225,
+      1984,
+      1400,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 88,
+    "coords": [
+      1400,
+      1984,
+      1575,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 89,
+    "coords": [
+      1575,
+      1984,
+      1750,
+      2232
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 90,
+    "coords": [
+      0,
+      2232,
+      175,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 91,
+    "coords": [
+      175,
+      2232,
+      350,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 92,
+    "coords": [
+      350,
+      2232,
+      525,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 93,
+    "coords": [
+      525,
+      2232,
+      700,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 94,
+    "coords": [
+      700,
+      2232,
+      875,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 95,
+    "coords": [
+      875,
+      2232,
+      1050,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 96,
+    "coords": [
+      1050,
+      2232,
+      1225,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 97,
+    "coords": [
+      1225,
+      2232,
+      1400,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 98,
+    "coords": [
+      1400,
+      2232,
+      1575,
+      2480
+    ]
+  },
+  {
+    "page": 0,
+    "patch_index": 99,
+    "coords": [
+      1575,
+      2232,
+      1750,
+      2480
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 0,
+    "coords": [
+      0,
+      0,
+      127,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 1,
+    "coords": [
+      127,
+      0,
+      254,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 2,
+    "coords": [
+      254,
+      0,
+      381,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 3,
+    "coords": [
+      381,
+      0,
+      508,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 4,
+    "coords": [
+      508,
+      0,
+      635,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 5,
+    "coords": [
+      635,
+      0,
+      762,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 6,
+    "coords": [
+      762,
+      0,
+      889,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 7,
+    "coords": [
+      889,
+      0,
+      1016,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 8,
+    "coords": [
+      1016,
+      0,
+      1143,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 9,
+    "coords": [
+      1143,
+      0,
+      1270,
+      165
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 10,
+    "coords": [
+      0,
+      165,
+      127,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 11,
+    "coords": [
+      127,
+      165,
+      254,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 12,
+    "coords": [
+      254,
+      165,
+      381,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 13,
+    "coords": [
+      381,
+      165,
+      508,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 14,
+    "coords": [
+      508,
+      165,
+      635,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 15,
+    "coords": [
+      635,
+      165,
+      762,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 16,
+    "coords": [
+      762,
+      165,
+      889,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 17,
+    "coords": [
+      889,
+      165,
+      1016,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 18,
+    "coords": [
+      1016,
+      165,
+      1143,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 19,
+    "coords": [
+      1143,
+      165,
+      1270,
+      330
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 20,
+    "coords": [
+      0,
+      330,
+      127,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 21,
+    "coords": [
+      127,
+      330,
+      254,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 22,
+    "coords": [
+      254,
+      330,
+      381,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 23,
+    "coords": [
+      381,
+      330,
+      508,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 24,
+    "coords": [
+      508,
+      330,
+      635,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 25,
+    "coords": [
+      635,
+      330,
+      762,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 26,
+    "coords": [
+      762,
+      330,
+      889,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 27,
+    "coords": [
+      889,
+      330,
+      1016,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 28,
+    "coords": [
+      1016,
+      330,
+      1143,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 29,
+    "coords": [
+      1143,
+      330,
+      1270,
+      495
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 30,
+    "coords": [
+      0,
+      495,
+      127,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 31,
+    "coords": [
+      127,
+      495,
+      254,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 32,
+    "coords": [
+      254,
+      495,
+      381,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 33,
+    "coords": [
+      381,
+      495,
+      508,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 34,
+    "coords": [
+      508,
+      495,
+      635,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 35,
+    "coords": [
+      635,
+      495,
+      762,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 36,
+    "coords": [
+      762,
+      495,
+      889,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 37,
+    "coords": [
+      889,
+      495,
+      1016,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 38,
+    "coords": [
+      1016,
+      495,
+      1143,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 39,
+    "coords": [
+      1143,
+      495,
+      1270,
+      660
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 40,
+    "coords": [
+      0,
+      660,
+      127,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 41,
+    "coords": [
+      127,
+      660,
+      254,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 42,
+    "coords": [
+      254,
+      660,
+      381,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 43,
+    "coords": [
+      381,
+      660,
+      508,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 44,
+    "coords": [
+      508,
+      660,
+      635,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 45,
+    "coords": [
+      635,
+      660,
+      762,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 46,
+    "coords": [
+      762,
+      660,
+      889,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 47,
+    "coords": [
+      889,
+      660,
+      1016,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 48,
+    "coords": [
+      1016,
+      660,
+      1143,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 49,
+    "coords": [
+      1143,
+      660,
+      1270,
+      825
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 50,
+    "coords": [
+      0,
+      825,
+      127,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 51,
+    "coords": [
+      127,
+      825,
+      254,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 52,
+    "coords": [
+      254,
+      825,
+      381,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 53,
+    "coords": [
+      381,
+      825,
+      508,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 54,
+    "coords": [
+      508,
+      825,
+      635,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 55,
+    "coords": [
+      635,
+      825,
+      762,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 56,
+    "coords": [
+      762,
+      825,
+      889,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 57,
+    "coords": [
+      889,
+      825,
+      1016,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 58,
+    "coords": [
+      1016,
+      825,
+      1143,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 59,
+    "coords": [
+      1143,
+      825,
+      1270,
+      990
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 60,
+    "coords": [
+      0,
+      990,
+      127,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 61,
+    "coords": [
+      127,
+      990,
+      254,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 62,
+    "coords": [
+      254,
+      990,
+      381,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 63,
+    "coords": [
+      381,
+      990,
+      508,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 64,
+    "coords": [
+      508,
+      990,
+      635,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 65,
+    "coords": [
+      635,
+      990,
+      762,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 66,
+    "coords": [
+      762,
+      990,
+      889,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 67,
+    "coords": [
+      889,
+      990,
+      1016,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 68,
+    "coords": [
+      1016,
+      990,
+      1143,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 69,
+    "coords": [
+      1143,
+      990,
+      1270,
+      1155
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 70,
+    "coords": [
+      0,
+      1155,
+      127,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 71,
+    "coords": [
+      127,
+      1155,
+      254,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 72,
+    "coords": [
+      254,
+      1155,
+      381,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 73,
+    "coords": [
+      381,
+      1155,
+      508,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 74,
+    "coords": [
+      508,
+      1155,
+      635,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 75,
+    "coords": [
+      635,
+      1155,
+      762,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 76,
+    "coords": [
+      762,
+      1155,
+      889,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 77,
+    "coords": [
+      889,
+      1155,
+      1016,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 78,
+    "coords": [
+      1016,
+      1155,
+      1143,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 79,
+    "coords": [
+      1143,
+      1155,
+      1270,
+      1320
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 80,
+    "coords": [
+      0,
+      1320,
+      127,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 81,
+    "coords": [
+      127,
+      1320,
+      254,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 82,
+    "coords": [
+      254,
+      1320,
+      381,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 83,
+    "coords": [
+      381,
+      1320,
+      508,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 84,
+    "coords": [
+      508,
+      1320,
+      635,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 85,
+    "coords": [
+      635,
+      1320,
+      762,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 86,
+    "coords": [
+      762,
+      1320,
+      889,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 87,
+    "coords": [
+      889,
+      1320,
+      1016,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 88,
+    "coords": [
+      1016,
+      1320,
+      1143,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 89,
+    "coords": [
+      1143,
+      1320,
+      1270,
+      1485
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 90,
+    "coords": [
+      0,
+      1485,
+      127,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 91,
+    "coords": [
+      127,
+      1485,
+      254,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 92,
+    "coords": [
+      254,
+      1485,
+      381,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 93,
+    "coords": [
+      381,
+      1485,
+      508,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 94,
+    "coords": [
+      508,
+      1485,
+      635,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 95,
+    "coords": [
+      635,
+      1485,
+      762,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 96,
+    "coords": [
+      762,
+      1485,
+      889,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 97,
+    "coords": [
+      889,
+      1485,
+      1016,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 98,
+    "coords": [
+      1016,
+      1485,
+      1143,
+      1650
+    ]
+  },
+  {
+    "page": 1,
+    "patch_index": 99,
+    "coords": [
+      1143,
+      1485,
+      1270,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 0,
+    "coords": [
+      0,
+      0,
+      127,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 1,
+    "coords": [
+      127,
+      0,
+      254,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 2,
+    "coords": [
+      254,
+      0,
+      381,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 3,
+    "coords": [
+      381,
+      0,
+      508,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 4,
+    "coords": [
+      508,
+      0,
+      635,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 5,
+    "coords": [
+      635,
+      0,
+      762,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 6,
+    "coords": [
+      762,
+      0,
+      889,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 7,
+    "coords": [
+      889,
+      0,
+      1016,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 8,
+    "coords": [
+      1016,
+      0,
+      1143,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 9,
+    "coords": [
+      1143,
+      0,
+      1270,
+      165
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 10,
+    "coords": [
+      0,
+      165,
+      127,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 11,
+    "coords": [
+      127,
+      165,
+      254,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 12,
+    "coords": [
+      254,
+      165,
+      381,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 13,
+    "coords": [
+      381,
+      165,
+      508,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 14,
+    "coords": [
+      508,
+      165,
+      635,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 15,
+    "coords": [
+      635,
+      165,
+      762,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 16,
+    "coords": [
+      762,
+      165,
+      889,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 17,
+    "coords": [
+      889,
+      165,
+      1016,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 18,
+    "coords": [
+      1016,
+      165,
+      1143,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 19,
+    "coords": [
+      1143,
+      165,
+      1270,
+      330
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 20,
+    "coords": [
+      0,
+      330,
+      127,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 21,
+    "coords": [
+      127,
+      330,
+      254,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 22,
+    "coords": [
+      254,
+      330,
+      381,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 23,
+    "coords": [
+      381,
+      330,
+      508,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 24,
+    "coords": [
+      508,
+      330,
+      635,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 25,
+    "coords": [
+      635,
+      330,
+      762,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 26,
+    "coords": [
+      762,
+      330,
+      889,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 27,
+    "coords": [
+      889,
+      330,
+      1016,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 28,
+    "coords": [
+      1016,
+      330,
+      1143,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 29,
+    "coords": [
+      1143,
+      330,
+      1270,
+      495
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 30,
+    "coords": [
+      0,
+      495,
+      127,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 31,
+    "coords": [
+      127,
+      495,
+      254,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 32,
+    "coords": [
+      254,
+      495,
+      381,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 33,
+    "coords": [
+      381,
+      495,
+      508,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 34,
+    "coords": [
+      508,
+      495,
+      635,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 35,
+    "coords": [
+      635,
+      495,
+      762,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 36,
+    "coords": [
+      762,
+      495,
+      889,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 37,
+    "coords": [
+      889,
+      495,
+      1016,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 38,
+    "coords": [
+      1016,
+      495,
+      1143,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 39,
+    "coords": [
+      1143,
+      495,
+      1270,
+      660
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 40,
+    "coords": [
+      0,
+      660,
+      127,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 41,
+    "coords": [
+      127,
+      660,
+      254,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 42,
+    "coords": [
+      254,
+      660,
+      381,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 43,
+    "coords": [
+      381,
+      660,
+      508,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 44,
+    "coords": [
+      508,
+      660,
+      635,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 45,
+    "coords": [
+      635,
+      660,
+      762,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 46,
+    "coords": [
+      762,
+      660,
+      889,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 47,
+    "coords": [
+      889,
+      660,
+      1016,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 48,
+    "coords": [
+      1016,
+      660,
+      1143,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 49,
+    "coords": [
+      1143,
+      660,
+      1270,
+      825
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 50,
+    "coords": [
+      0,
+      825,
+      127,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 51,
+    "coords": [
+      127,
+      825,
+      254,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 52,
+    "coords": [
+      254,
+      825,
+      381,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 53,
+    "coords": [
+      381,
+      825,
+      508,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 54,
+    "coords": [
+      508,
+      825,
+      635,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 55,
+    "coords": [
+      635,
+      825,
+      762,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 56,
+    "coords": [
+      762,
+      825,
+      889,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 57,
+    "coords": [
+      889,
+      825,
+      1016,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 58,
+    "coords": [
+      1016,
+      825,
+      1143,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 59,
+    "coords": [
+      1143,
+      825,
+      1270,
+      990
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 60,
+    "coords": [
+      0,
+      990,
+      127,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 61,
+    "coords": [
+      127,
+      990,
+      254,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 62,
+    "coords": [
+      254,
+      990,
+      381,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 63,
+    "coords": [
+      381,
+      990,
+      508,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 64,
+    "coords": [
+      508,
+      990,
+      635,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 65,
+    "coords": [
+      635,
+      990,
+      762,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 66,
+    "coords": [
+      762,
+      990,
+      889,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 67,
+    "coords": [
+      889,
+      990,
+      1016,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 68,
+    "coords": [
+      1016,
+      990,
+      1143,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 69,
+    "coords": [
+      1143,
+      990,
+      1270,
+      1155
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 70,
+    "coords": [
+      0,
+      1155,
+      127,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 71,
+    "coords": [
+      127,
+      1155,
+      254,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 72,
+    "coords": [
+      254,
+      1155,
+      381,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 73,
+    "coords": [
+      381,
+      1155,
+      508,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 74,
+    "coords": [
+      508,
+      1155,
+      635,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 75,
+    "coords": [
+      635,
+      1155,
+      762,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 76,
+    "coords": [
+      762,
+      1155,
+      889,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 77,
+    "coords": [
+      889,
+      1155,
+      1016,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 78,
+    "coords": [
+      1016,
+      1155,
+      1143,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 79,
+    "coords": [
+      1143,
+      1155,
+      1270,
+      1320
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 80,
+    "coords": [
+      0,
+      1320,
+      127,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 81,
+    "coords": [
+      127,
+      1320,
+      254,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 82,
+    "coords": [
+      254,
+      1320,
+      381,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 83,
+    "coords": [
+      381,
+      1320,
+      508,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 84,
+    "coords": [
+      508,
+      1320,
+      635,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 85,
+    "coords": [
+      635,
+      1320,
+      762,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 86,
+    "coords": [
+      762,
+      1320,
+      889,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 87,
+    "coords": [
+      889,
+      1320,
+      1016,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 88,
+    "coords": [
+      1016,
+      1320,
+      1143,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 89,
+    "coords": [
+      1143,
+      1320,
+      1270,
+      1485
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 90,
+    "coords": [
+      0,
+      1485,
+      127,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 91,
+    "coords": [
+      127,
+      1485,
+      254,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 92,
+    "coords": [
+      254,
+      1485,
+      381,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 93,
+    "coords": [
+      381,
+      1485,
+      508,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 94,
+    "coords": [
+      508,
+      1485,
+      635,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 95,
+    "coords": [
+      635,
+      1485,
+      762,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 96,
+    "coords": [
+      762,
+      1485,
+      889,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 97,
+    "coords": [
+      889,
+      1485,
+      1016,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 98,
+    "coords": [
+      1016,
+      1485,
+      1143,
+      1650
+    ]
+  },
+  {
+    "page": 2,
+    "patch_index": 99,
+    "coords": [
+      1143,
+      1485,
+      1270,
+      1650
     ]
   }
 ]
