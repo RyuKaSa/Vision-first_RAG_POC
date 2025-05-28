@@ -9,7 +9,9 @@ A proof-of-concept that uses CLIP to retrieve and cluster image patches from PDF
 .
 ├── .venv/                           # Python virtualenv
 ├── documents/                       # Source PDFs
-├── inference.py                     # Script to retrieve & save top-row crops
+├── offline/prep_dataset.py          # Script to retrieve & save top-row crops
+
+├── online/inference.py              # Script to retrieve & save top-row crops
 ├── output/
 │   ├── image\_patch\_embeddings.pt  # CLIP embeddings
 │   ├── metadata.json                # Patch-coord metadata
