@@ -1,4 +1,4 @@
-# Vision-First Retrieval Augmented Generation POC
+# Vision-First RAG POC
 
 A proof-of-concept that uses CLIP to retrieve and cluster image patches from PDF pages into full-width "rows" of interest, with OCR and local LLM-powered question answering.
 
