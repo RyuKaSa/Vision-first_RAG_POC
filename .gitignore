@@ -15,3 +15,6 @@ output/merged.pdf
 # Raw documents (keep the folder, ignore PDFs)
 documents/*
 !documents/
+
+
+exported_sources.json

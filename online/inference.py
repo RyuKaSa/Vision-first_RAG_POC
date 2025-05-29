@@ -9,6 +9,11 @@ from pdf2image import convert_from_bytes
 from PyPDF2 import PdfMerger
 from io import BytesIO
 
+# OCR
+import pytesseract
+import requests
+from PIL import Image
+
 # — — —  Setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DOC_DIR    = "documents"
@@ -70,6 +75,23 @@ def cluster_patches(patches, max_dist=20):
             rows.append([(idx, score, meta)])
     return rows
 
+# --- OCR + LLM helpers ---------------------------------------------
+
+def ocr_image(img):
+    """Return raw UTF-8 text from a PIL.Image."""
+    return pytesseract.image_to_string(img, lang='eng', config='--psm 6').strip()
+
+def call_ollama(prompt: str,
+                model: str = "gemma3:1b",
+                host: str = "http://localhost:11434") -> str:
+    """Blocking call to Ollama /api/generate with stream=False."""
+    url = f"{host}/api/generate"
+    payload = {"model": model, "prompt": prompt, "stream": False}
+    r = requests.post(url, json=payload, timeout=120)
+    r.raise_for_status()
+    return r.json()["response"]
+
+
 # — — —  Main
 def main():
     query = input("Enter your query: ")
@@ -110,6 +132,30 @@ def main():
             print(f"    patch {meta['patch_index']}, coords={meta['coords']}, score={score:.4f}")
         print("-"*40)
     print("Done. Rows saved with full-width context.")
+
+    # ── collect OCR text from the saved crops ───────────────────────
+    context_chunks = []
+    for i in range(1, len(rows)+1):
+        crop_path = os.path.join(TOP_DIR, f"row{i}.png")
+        with Image.open(crop_path) as im:
+            txt = ocr_image(im)
+            if txt:
+                context_chunks.append(txt)
+
+    context = "\n".join(context_chunks)[:8000]  # keep it short; 8k ≈ 2k tokens
+
+    # ── slam it into Gemma 3 ────────────────────────────────────────
+    sys_msg = ("You are a terse Q&A assistant. If the context lacks the answer, "
+               "say 'Not found'.")
+    prompt = f"{sys_msg}\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:"
+    answer = call_ollama(prompt)
+
+    print("\n=== RAW OCR CONTEXT ===")
+    print(context)
+
+    print("\n=== LLM ANSWER ===")
+    print(answer)
+
 
 if __name__ == '__main__':
     main()
