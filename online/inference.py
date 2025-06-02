@@ -82,7 +82,7 @@ def ocr_image(img):
     return pytesseract.image_to_string(img, lang='eng', config='--psm 6').strip()
 
 def call_ollama(prompt: str,
-                model: str = "gemma3:1b",
+                model: str = "gemma3:4b-it-qat",
                 host: str = "http://localhost:11434") -> str:
     """Blocking call to Ollama /api/generate with stream=False."""
     url = f"{host}/api/generate"
@@ -97,6 +97,10 @@ def main():
     query = input("Enter your query: ")
     q_vec = embed_text(query)
 
+    # paraphrase the query
+    paraphrased_query = call_ollama(f"extract and return only the most important 1 to 3 keywords from the following question: {query}")
+    print(f"[INFO] Paraphrased query: {paraphrased_query}")
+
     # compute similarities
     emb_tensor = torch.stack(all_embeds).to(device)
     emb_tensor = F.normalize(emb_tensor, p=2, dim=-1)
@@ -104,9 +108,32 @@ def main():
     probs = F.softmax(sims, dim=0)
     topk = torch.topk(probs, k=TOP_K)
 
-    # gather top-k patches
+    # compute similarities between the paraphrased query and the embeddings
+    q_vec = embed_text(paraphrased_query)
+    emb_tensor = torch.stack(all_embeds).to(device)
+    emb_tensor = F.normalize(emb_tensor, p=2, dim=-1)
+    sims = emb_tensor @ q_vec
+    probs = F.softmax(sims, dim=0)
+    topk = torch.topk(probs, k=TOP_K)
+
+    # gather top-k patches from original query
     patches = [(idx.item(), val.item(), metadata[idx.item()])
                for idx,val in zip(topk.indices, topk.values)]
+
+    # gather top-k patches from paraphrased query
+    paraphrased_patches = [(idx.item(), val.item(), metadata[idx.item()])
+               for idx,val in zip(topk.indices, topk.values)]
+
+
+    # we merge
+    patches = patches + paraphrased_patches
+
+    # we sort the patches by score
+    patches.sort(key=lambda x: x[1], reverse=True)
+
+    # we remove duplicates
+    seen = set()
+    patches = [x for x in patches if not (x[0] in seen or seen.add(x[0]))]
 
     # cluster into rows
     rows = cluster_patches(patches)
@@ -144,7 +171,7 @@ def main():
 
     context = "\n".join(context_chunks)[:8000]  # keep it short; 8k ≈ 2k tokens
 
-    # ── slam it into Gemma 3 ────────────────────────────────────────
+    # ── plug it into Gemma 3 ────────────────────────────────────────
     sys_msg = ("You are a terse Q&A assistant. If the context lacks the answer, "
                "say 'Not found'.")
     prompt = f"{sys_msg}\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:"

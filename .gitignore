@@ -1,5 +1,6 @@
 # Virtual environment
 .venv/
+.hf_home/
 
 # Utility scripts
 list_files.py
