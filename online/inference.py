@@ -97,43 +97,21 @@ def main():
     query = input("Enter your query: ")
     q_vec = embed_text(query)
 
-    # paraphrase the query
-    paraphrased_query = call_ollama(f"extract and return only the most important 1 to 3 keywords from the following question: {query}")
-    print(f"[INFO] Paraphrased query: {paraphrased_query}")
+    # --- compute similarities once --------------------------
+    emb_tensor = F.normalize(torch.stack(all_embeds).to(device), p=2, dim=-1)
 
-    # compute similarities
-    emb_tensor = torch.stack(all_embeds).to(device)
-    emb_tensor = F.normalize(emb_tensor, p=2, dim=-1)
-    sims = emb_tensor @ q_vec
-    probs = F.softmax(sims, dim=0)
-    topk = torch.topk(probs, k=TOP_K)
+    q_full  = embed_text(query)
+    keywords = call_ollama(
+        f"return 1–3 key noun phrases that appear verbatim in: {query}"
+    ).strip()
+    q_key   = embed_text(keywords)
 
-    # compute similarities between the paraphrased query and the embeddings
-    q_vec = embed_text(paraphrased_query)
-    emb_tensor = torch.stack(all_embeds).to(device)
-    emb_tensor = F.normalize(emb_tensor, p=2, dim=-1)
-    sims = emb_tensor @ q_vec
-    probs = F.softmax(sims, dim=0)
-    topk = torch.topk(probs, k=TOP_K)
+    q_vec   = F.normalize(q_full + 0.5 * q_key, p=2, dim=-1)
+    sims    = emb_tensor @ q_vec            # cosine because vectors are unit-norm
+    topk_val, topk_idx = torch.topk(sims, k=TOP_K * 2)   # grab a few extra
 
-    # gather top-k patches from original query
-    patches = [(idx.item(), val.item(), metadata[idx.item()])
-               for idx,val in zip(topk.indices, topk.values)]
-
-    # gather top-k patches from paraphrased query
-    paraphrased_patches = [(idx.item(), val.item(), metadata[idx.item()])
-               for idx,val in zip(topk.indices, topk.values)]
-
-
-    # we merge
-    patches = patches + paraphrased_patches
-
-    # we sort the patches by score
-    patches.sort(key=lambda x: x[1], reverse=True)
-
-    # we remove duplicates
-    seen = set()
-    patches = [x for x in patches if not (x[0] in seen or seen.add(x[0]))]
+    patches = [(i.item(), v.item(), metadata[i.item()])
+            for i, v in zip(topk_idx, topk_val)]
 
     # cluster into rows
     rows = cluster_patches(patches)
