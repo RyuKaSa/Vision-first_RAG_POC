@@ -14,7 +14,7 @@ from transformers import CLIPModel, CLIPProcessor
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 DOC_DIR = "documents"
 OUTPUT_DIR = "output"
-MAX_PATCHES_PER_PAGE = 500
+MAX_PATCHES_PER_PAGE = 200
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

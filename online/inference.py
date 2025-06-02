@@ -23,6 +23,7 @@ META_FILE  = os.path.join(OUTPUT_DIR, "metadata.json")
 TOP_DIR    = os.path.join(OUTPUT_DIR, "top_rows")
 DPI        = 150  # must match indexing DPI
 TOP_K      = 4
+NUM_NEIGHBOR_LAYERS = 1 # 0 for tight box, 1 for 1-layer avg patch padding
 
 os.makedirs(TOP_DIR, exist_ok=True)
 # clean output folder
@@ -57,23 +58,73 @@ def embed_text(query: str) -> torch.Tensor:
     return F.normalize(feats.squeeze(0), p=2, dim=-1)
 
 # — — —  Cluster patches into row groups (by vertical proximity)
-def cluster_patches(patches, max_dist=20):
-    rows = []
-    for idx, score, meta in patches:
-        l,u,_,d = meta['coords']
-        mid_y = (u + d) / 2
-        placed = False
-        for row in rows:
-            _,_,m0 = row[0]
-            u0,d0 = m0['coords'][1], m0['coords'][3]
-            mid_y0 = (u0 + d0) / 2
-            if meta['page']==m0['page'] and abs(mid_y - mid_y0) < max_dist:
-                row.append((idx, score, meta))
-                placed = True
-                break
-        if not placed:
-            rows.append([(idx, score, meta)])
-    return rows
+def cluster_patches(patches, num_neighbor_layers=1, dist_thresh=100):
+    """
+    Clusters patches into tight rectangular groups based on spatial proximity (L2 in center coords).
+    Then expands each group based on average patch size and `num_neighbor_layers`.
+    """
+    if not patches:
+        return []
+
+    from math import hypot
+
+    def center(meta):
+        l, u, r, d = meta['coords']
+        return ((l + r) / 2, (u + d) / 2)
+
+    def close_enough(meta1, meta2):
+        x1, y1 = center(meta1)
+        x2, y2 = center(meta2)
+        return hypot(x1 - x2, y1 - y2) <= dist_thresh and meta1['page'] == meta2['page']
+
+    # Greedy clustering (disjoint sets based on proximity)
+    clusters = []
+    used = set()
+
+    for i, (idx1, score1, meta1) in enumerate(patches):
+        if i in used:
+            continue
+        cluster = [(idx1, score1, meta1)]
+        used.add(i)
+        for j, (idx2, score2, meta2) in enumerate(patches):
+            if j in used:
+                continue
+            if close_enough(meta1, meta2):
+                cluster.append((idx2, score2, meta2))
+                used.add(j)
+        clusters.append(cluster)
+
+    # Build bounding boxes
+    grouped = []
+    for cluster in clusters:
+        boxes = [meta['coords'] for _, _, meta in cluster]
+        page_idx = cluster[0][2]['page']
+
+        widths  = [r - l for l, u, r, d in boxes]
+        heights = [d - u for l, u, r, d in boxes]
+        avg_w = sum(widths) / len(widths) if widths else 0.0
+        avg_h = sum(heights) / len(heights) if heights else 0.0
+
+        margin_x = num_neighbor_layers * avg_w
+        margin_y = num_neighbor_layers * avg_h
+
+        lefts   = [b[0] for b in boxes]
+        uppers  = [b[1] for b in boxes]
+        rights  = [b[2] for b in boxes]
+        lowers  = [b[3] for b in boxes]
+
+        l = max(0.0, min(lefts) - margin_x)
+        u = max(0.0, min(uppers) - margin_y)
+        r = max(l, max(rights) + margin_x)
+        d = max(u, max(lowers) + margin_y)
+
+        grouped.append({
+            "page": page_idx,
+            "bbox": (l, u, r, d),
+            "patches": cluster
+        })
+
+    return grouped
 
 # --- OCR + LLM helpers ---------------------------------------------
 
@@ -108,40 +159,35 @@ def main():
 
     q_vec   = F.normalize(q_full + 0.5 * q_key, p=2, dim=-1)
     sims    = emb_tensor @ q_vec            # cosine because vectors are unit-norm
-    topk_val, topk_idx = torch.topk(sims, k=TOP_K * 2)   # grab a few extra
+    topk_val, topk_idx = torch.topk(sims, k=TOP_K)
 
     patches = [(i.item(), v.item(), metadata[i.item()])
             for i, v in zip(topk_idx, topk_val)]
 
     # cluster into rows
-    rows = cluster_patches(patches)
+    groups = cluster_patches(patches, num_neighbor_layers=NUM_NEIGHBOR_LAYERS)
 
     print("=== TOP ROWS OF PATCHES ===")
-    for i, row in enumerate(rows, start=1):
-        # Determine vertical bounds from row patches
-        page_no = row[0][2]['page']
-        ys = [m['coords'][1] for _,_,m in row] + [m['coords'][3] for _,_,m in row]
-        y_min, y_max = min(ys), max(ys)
+    for i, group in enumerate(groups, start=1):
+        page_no = group["page"]
+        l, u, r, d = group["bbox"]
 
-        # Crop full width of page between y_min and y_max for context
         page_img = page_images[page_no]
-        width, height = page_img.size
-        bbox = (0, y_min, width, y_max)
-        row_crop = page_img.crop(bbox)
+        bbox = (l, u, r, d)
+        group_crop = page_img.crop(bbox)
 
-        # Save and print metadata
-        out_path = os.path.join(TOP_DIR, f"row{i}.png")
-        row_crop.save(out_path)
-        print(f"[Row {i}] page={page_no}, patches={len(row)} -> saved: {out_path}")
-        for idx, score, meta in row:
+        out_path = os.path.join(TOP_DIR, f"group{i}.png")
+        group_crop.save(out_path)
+        print(f"[Group {i}] page={page_no}, bbox={bbox}, patches={len(group['patches'])} -> saved: {out_path}")
+        for idx, score, meta in group['patches']:
             print(f"    patch {meta['patch_index']}, coords={meta['coords']}, score={score:.4f}")
         print("-"*40)
     print("Done. Rows saved with full-width context.")
 
     # ── collect OCR text from the saved crops ───────────────────────
     context_chunks = []
-    for i in range(1, len(rows)+1):
-        crop_path = os.path.join(TOP_DIR, f"row{i}.png")
+    for i in range(1, len(groups)+1):
+        crop_path = os.path.join(TOP_DIR, f"group{i}.png")
         with Image.open(crop_path) as im:
             txt = ocr_image(im)
             if txt:
@@ -150,13 +196,17 @@ def main():
     context = "\n".join(context_chunks)[:8000]  # keep it short; 8k ≈ 2k tokens
 
     # ── plug it into Gemma 3 ────────────────────────────────────────
+    # lets first clean the OCR output, using a run of LLM
+    cleaned_context = call_ollama(f"clean the following text, removing any non-alphanumeric characters, extra whitespace, spelling mistakes. Return format should be strictly only the cleaned text, nothing else: {context}")
+    # print(f"[INFO] Cleaned context: {cleaned_context}")
+
     sys_msg = ("You are a terse Q&A assistant. If the context lacks the answer, "
                "say 'Not found'.")
-    prompt = f"{sys_msg}\n\nContext:\n{context}\n\nQuestion: {query}\nAnswer:"
+    prompt = f"{sys_msg}\n\nContext:\n{cleaned_context}\n\nQuestion: {query}\nAnswer:"
     answer = call_ollama(prompt)
 
-    print("\n=== RAW OCR CONTEXT ===")
-    print(context)
+    print("\n=== CLEANED OCR CONTEXT ===")
+    print(cleaned_context)
 
     print("\n=== LLM ANSWER ===")
     print(answer)
