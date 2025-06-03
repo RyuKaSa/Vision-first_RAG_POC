@@ -21,8 +21,8 @@ OUTPUT_DIR = "output"
 EMBED_FILE = os.path.join(OUTPUT_DIR, "image_patch_embeddings.pt")
 META_FILE  = os.path.join(OUTPUT_DIR, "metadata.json")
 TOP_DIR    = os.path.join(OUTPUT_DIR, "top_rows")
-DPI        = 150  # must match indexing DPI
-TOP_K      = 4
+DPI        = 150
+TOP_K      = 6
 NUM_NEIGHBOR_LAYERS = 1 # 0 for tight box, 1 for 1-layer avg patch padding
 
 os.makedirs(TOP_DIR, exist_ok=True)
@@ -52,7 +52,7 @@ print(f"[INFO] Loaded {len(page_images)} pages")
 
 # — — —  Text embed helper
 def embed_text(query: str) -> torch.Tensor:
-    inputs = processor(text=[query], return_tensors="pt", padding=True).to(device)
+    inputs = processor(text=[query], return_tensors="pt", padding=True, truncation=True).to(device)
     with torch.no_grad():
         feats = model.get_text_features(**inputs)
     return F.normalize(feats.squeeze(0), p=2, dim=-1)
@@ -129,8 +129,7 @@ def cluster_patches(patches, num_neighbor_layers=1, dist_thresh=100):
 # --- OCR + LLM helpers ---------------------------------------------
 
 def ocr_image(img):
-    """Return raw UTF-8 text from a PIL.Image."""
-    return pytesseract.image_to_string(img, lang='eng', config='--psm 6').strip()
+    return pytesseract.image_to_string(img, lang='eng', config='--psm 6 -c preserve_interword_spaces=1').strip()
 
 def call_ollama(prompt: str,
                 model: str = "gemma3:4b-it-qat",
@@ -191,13 +190,14 @@ def main():
         with Image.open(crop_path) as im:
             txt = ocr_image(im)
             if txt:
+                print(f"[DEBUG] group{i} raw OCR: {repr(txt[:2000])}")
                 context_chunks.append(txt)
 
     context = "\n".join(context_chunks)[:8000]  # keep it short; 8k ≈ 2k tokens
 
     # ── plug it into Gemma 3 ────────────────────────────────────────
     # lets first clean the OCR output, using a run of LLM
-    cleaned_context = call_ollama(f"clean the following text, removing any non-alphanumeric characters, extra whitespace, spelling mistakes. Return format should be strictly only the cleaned text, nothing else: {context}")
+    cleaned_context = call_ollama(f"normalize the following OCR text for readability while keeping all names, numbers, and symbols intact. Do not omit any lines. Preserve proper nouns and formatting: {context}")
     # print(f"[INFO] Cleaned context: {cleaned_context}")
 
     sys_msg = ("You are a terse Q&A assistant. If the context lacks the answer, "
